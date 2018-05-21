@@ -54,7 +54,6 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
     }
 
     private static final String TAG = "NotifyMeDialogFragment";
-
     public static final String FRAGMENT_ARG_PRODUCT_ID = "productid";
     public static final String FRAGMENT_ARG_STORE_ID = "storeid";
     public static final String FRAGMENT_ARG_NAME = "name";
@@ -72,13 +71,9 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
     @BindView(R.id.btn_cancel)
     public Button btnCancel;
     @BindView(R.id.tv_tilname)
-    public TextView tilName;
+    public TextView tvCheckName;
     @BindView(R.id.tv_tilemail)
-    public TextView tilEmail;
-//    @BindView(R.id.til_email)
-//    public TextInputLayout tilName;
-//    @BindView(R.id.til_email)
-//    public TextInputLayout tilEmail;
+    public TextView tvCheckEmail;
     @BindView(R.id.tv_errmssage)
     public TextView tvErrMessage;
     private Unbinder unbinder = null;
@@ -92,7 +87,6 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
         setStyle(DialogFragment.STYLE_NO_TITLE, 0);
     }
 
@@ -100,12 +94,9 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         View view  = inflater.inflate(R.layout.dialog_notify_me, container);
-
         unbinder = ButterKnife.bind(this, view);
         initData();
         initView();
-
-
         return view;
     }
 
@@ -113,13 +104,11 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
         if(fragmentManager == null) {
             return;
         }
-
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment fragment = fragmentManager.findFragmentByTag(TAG);
         if(fragment != null) {
             transaction.remove(fragment);
         }
-
         show(transaction, TAG);
     }
 
@@ -132,7 +121,6 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
         cbNotifyMeWithEmail.setChecked(true);
         etName.setText(name);
         etEmail.setText(email);
-
         JViewUtils.setSoildButtonGlobalStyle(getActivity(), btnNotifyMe);
         JViewUtils.setStrokeButtonGlobalStyle(getActivity(), btnCancel);
 
@@ -143,7 +131,6 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
         if(bundle == null) {
             return;
         }
-
         productId = bundle.getString(FRAGMENT_ARG_PRODUCT_ID);
         storeId = bundle.getString(FRAGMENT_ARG_STORE_ID);
         name = bundle.getString(FRAGMENT_ARG_NAME);
@@ -229,32 +216,23 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
     private void showErrMessage(InvalidationCode errCode){
         switch(errCode){
             case NAME_IS_EMPTY:
-                tilName.setVisibility(View.VISIBLE);
-//                tilName.setErrorEnabled(true);
-//                tilName.setError(getString(R.string.apply_hint_red));
+                tvCheckName.setVisibility(View.VISIBLE);
                 break;
             case EMAIL_IS_EMPTY:
-                tilEmail.setVisibility(View.VISIBLE);
-//                tilEmail.setErrorEnabled(true);
-//                tilEmail.setError(getString(R.string.apply_hint_red));
+                tvCheckEmail.setVisibility(View.VISIBLE);
                 break;
             case EMAIL_INVALID:
-                tilEmail.setText(getString(R.string.loginregister_emailbound_tips_error_email_format));
-                tilEmail.setVisibility(View.VISIBLE);
-//                tilEmail.setError(getString(R.string.loginregister_emailbound_tips_error_email_format));
+                tvCheckEmail.setText(getString(R.string.loginregister_emailbound_tips_error_email_format));
+                tvCheckEmail.setVisibility(View.VISIBLE);
                 break;
         }
     }
 
     private void hideErrMessage(InvalidationType type){
         if(type == InvalidationType.USER_NAME){
-            tilName.setError("");
-//            tilName.setErrorEnabled(false);
-            tilName.setVisibility(View.GONE);
+            tvCheckName.setVisibility(View.GONE);
         } else if(type == InvalidationType.USER_EMAIL){
-            tilEmail.setError("");
-            tilEmail.setVisibility(View.GONE);
-//            tilEmail.setErrorEnabled(false);
+            tvCheckEmail.setVisibility(View.GONE);
         }
     }
 

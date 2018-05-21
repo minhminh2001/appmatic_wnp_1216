@@ -1093,18 +1093,9 @@ public class ProductDetailActivity extends com.whitelabel.app.BaseActivity<Produ
         webView.getSettings().setSupportZoom(false);
         webView.getSettings().setDisplayZoomControls(false);
         webView.setPadding(0, 0, 0, 0);
-//        webView.setInitialScale(getScale());
         return webView;
     }
 
-    //Scale webview size
-//    private int getScale(){
-//        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-//        int width = display.getWidth();
-//        Double val = new Double(width)/new Double(width);
-//        val = val * 100d;
-//        return val.intValue();
-//    }
     public  void hideBindProductView() {
         bpvBindProduct.setVisibility(View.GONE);
     }
