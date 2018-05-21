@@ -89,11 +89,11 @@
             android:name=".ui.start.StartActivityV2"
             android:screenOrientation="portrait"
             android:theme="@style/startStyle">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".activity.LoginRegisterActivity"
@@ -121,6 +121,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
 
                 <data
                     android:host="homepage"
@@ -146,6 +148,7 @@
             android:name=".ui.productdetail.ProductDetailActivity"
             android:theme="@style/ActivityAnimTheme"
             android:launchMode="singleTop"
+            android:hardwareAccelerated="true"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ShoppingCartActivity1"

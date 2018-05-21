@@ -2,6 +2,7 @@ package com.whitelabel.app.ui.productdetail;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Build;
@@ -15,6 +16,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,6 +25,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.webkit.WebSettings;
@@ -1089,8 +1092,19 @@ public class ProductDetailActivity extends com.whitelabel.app.BaseActivity<Produ
         webView.getSettings().setBuiltInZoomControls(false);//缩放
         webView.getSettings().setSupportZoom(false);
         webView.getSettings().setDisplayZoomControls(false);
+        webView.setPadding(0, 0, 0, 0);
+//        webView.setInitialScale(getScale());
         return webView;
     }
+
+    //Scale webview size
+//    private int getScale(){
+//        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+//        int width = display.getWidth();
+//        Double val = new Double(width)/new Double(width);
+//        val = val * 100d;
+//        return val.intValue();
+//    }
     public  void hideBindProductView() {
         bpvBindProduct.setVisibility(View.GONE);
     }

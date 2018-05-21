@@ -95,6 +95,7 @@
     <dimen name="scroll_height">1px</dimen>
     <dimen name="login_margin_top">22dp</dimen>
 
+    <dimen name="font_size">12sp</dimen>
 
     <dimen name="third_login_icon_w_and_h">50dp</dimen>
 </resources>

@@ -71,13 +71,16 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
     public Button btnNotifyMe;
     @BindView(R.id.btn_cancel)
     public Button btnCancel;
-    @BindView(R.id.til_name)
-    public TextInputLayout tilName;
-    @BindView(R.id.til_email)
-    public TextInputLayout tilEmail;
+    @BindView(R.id.tv_tilname)
+    public TextView tilName;
+    @BindView(R.id.tv_tilemail)
+    public TextView tilEmail;
+//    @BindView(R.id.til_email)
+//    public TextInputLayout tilName;
+//    @BindView(R.id.til_email)
+//    public TextInputLayout tilEmail;
     @BindView(R.id.tv_errmssage)
     public TextView tvErrMessage;
-
     private Unbinder unbinder = null;
     private String productId;
     private String storeId;
@@ -226,16 +229,19 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
     private void showErrMessage(InvalidationCode errCode){
         switch(errCode){
             case NAME_IS_EMPTY:
-                tilName.setErrorEnabled(true);
-                tilName.setError(getString(R.string.apply_hint_red));
+                tilName.setVisibility(View.VISIBLE);
+//                tilName.setErrorEnabled(true);
+//                tilName.setError(getString(R.string.apply_hint_red));
                 break;
             case EMAIL_IS_EMPTY:
-                tilEmail.setErrorEnabled(true);
-                tilEmail.setError(getString(R.string.apply_hint_red));
+                tilEmail.setVisibility(View.VISIBLE);
+//                tilEmail.setErrorEnabled(true);
+//                tilEmail.setError(getString(R.string.apply_hint_red));
                 break;
             case EMAIL_INVALID:
-                tilEmail.setErrorEnabled(true);
-                tilEmail.setError(getString(R.string.loginregister_emailbound_tips_error_email_format));
+                tilEmail.setText(getString(R.string.loginregister_emailbound_tips_error_email_format));
+                tilEmail.setVisibility(View.VISIBLE);
+//                tilEmail.setError(getString(R.string.loginregister_emailbound_tips_error_email_format));
                 break;
         }
     }
@@ -243,10 +249,12 @@ public class NotifyMeDialogFragment extends BaseDialogFragment<NotifyMeConstract
     private void hideErrMessage(InvalidationType type){
         if(type == InvalidationType.USER_NAME){
             tilName.setError("");
-            tilName.setErrorEnabled(false);
+//            tilName.setErrorEnabled(false);
+            tilName.setVisibility(View.GONE);
         } else if(type == InvalidationType.USER_EMAIL){
-            tilEmail.setError("");;
-            tilEmail.setErrorEnabled(false);
+            tilEmail.setError("");
+            tilEmail.setVisibility(View.GONE);
+//            tilEmail.setErrorEnabled(false);
         }
     }
 

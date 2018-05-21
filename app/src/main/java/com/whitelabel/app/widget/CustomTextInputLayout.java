@@ -45,6 +45,7 @@ public class CustomTextInputLayout extends TextInputLayout {
             return;
         }
         Drawable editTextBackground = getEditText().getBackground();
+
         if (editTextBackground == null) {
             return;
         }
