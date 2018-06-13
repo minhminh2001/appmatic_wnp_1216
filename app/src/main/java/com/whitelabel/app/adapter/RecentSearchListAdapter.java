@@ -69,7 +69,7 @@ public class RecentSearchListAdapter extends RecyclerView.Adapter implements Vie
 
         recentSearchList.clear();
 
-        if (list != null && list.size() > 0) {
+        if (list != null &&  !list.isEmpty()) {
             recentSearchList.addAll(list);
             addFooter(recentSearchList);
         }
